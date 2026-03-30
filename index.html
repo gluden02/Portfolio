@@ -92,7 +92,7 @@ section{padding:6rem 2.5rem}
 
 /* PROJECTS */
 .proj-slider-wrap{overflow:hidden;border-radius:10px;border:1px solid var(--border)}
-.proj-track{display:flex;transition:transform .5s cubic-bezier(.4,0,.2,1)}
+.proj-track{display:flex;transition:transform .8s cubic-bezier(.4,0,.2,1)}
 .proj-slide{min-width:100%;display:grid;grid-template-columns:30% 70%;min-height:420px}
 
 .proj-img-col{position:relative;overflow:hidden}
@@ -544,7 +544,7 @@ formSubmit.addEventListener('click',async()=>{
   if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){formMsg.textContent='Please enter a valid email.';formMsg.className='form-msg error';return}
   formSubmit.disabled=true;formSubmit.querySelector('span').textContent='Sending…';formMsg.textContent='';
   try{
-    const res=await fetch('https://formspree.io/f/YOUR_FORM_ID',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({name,email,message})});
+    const res=await fetch('https://formspree.io/f/xnjodbdw',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({name,email,message})});
     if(res.ok){formMsg.textContent="Message sent! I'll get back to you soon.";formMsg.className='form-msg success';document.getElementById('fname').value='';document.getElementById('femail').value='';document.getElementById('fmsg').value=''}
     else throw new Error()
   }catch{formMsg.textContent='Something went wrong. Try emailing directly.';formMsg.className='form-msg error'}
