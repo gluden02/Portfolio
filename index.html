@@ -176,15 +176,6 @@ section{padding:6rem 2.5rem}
 .cert-dot{width:6px;height:6px;border-radius:50%;background:var(--border);cursor:pointer;transition:background .2s}
 .cert-dot.active{background:var(--blue-soft)}
 
-/* EXPERIENCE */
-.exp-list{display:flex;flex-direction:column;gap:1px;background:var(--border);border-radius:10px;overflow:hidden}
-.exp-card{background:var(--card-bg);padding:2rem 2.5rem;display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:start;transition:background .2s}
-.exp-card:hover{background:var(--surface)}
-.exp-role{font-size:1.05rem;font-weight:600;letter-spacing:-.02em;color:var(--blue);margin-bottom:.25rem}
-.exp-company{font-size:13px;color:var(--text-secondary);margin-bottom:.75rem}
-.exp-desc{font-size:13px;color:var(--text-secondary);line-height:1.8}
-.exp-date{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);white-space:nowrap;padding-top:.25rem}
-
 /* CONTACT */
 .contact-inner{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
 .contact-left .section-title{font-size:clamp(2rem,4vw,3rem);line-height:1.1;margin-top:.75rem}
@@ -254,7 +245,6 @@ footer{padding:1.75rem 2.5rem;border-top:1px solid var(--border);display:flex;ju
     <li><a href="#projects">Projects</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#education">Education</a></li>
-    <li><a href="#experience">Experience</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <div class="nav-right">
@@ -464,39 +454,11 @@ footer{padding:1.75rem 2.5rem;border-top:1px solid var(--border);display:flex;ju
   </div>
 </section>
 
-<!-- EXPERIENCE -->
-<section id="experience" class="skills-section">
-  <div class="section-header">
-    <span class="section-number">05 — Experience</span>
-    <h2 class="section-title">Work &amp; volunteering</h2>
-  </div>
-
-  <div class="exp-list fade-up">
-    <div class="exp-card">
-      <div>
-        <div class="exp-role">Retirement Calculation Automation</div>
-        <div class="exp-company">Estudio Castellá &amp; Dorronsoro — Las Flores, Buenos Aires</div>
-        <p class="exp-desc">Developed a Python application to automate the analysis of teachers' work history and determine the optimal workload for retirement calculations, replacing a fully manual process. Built data cleaning and preprocessing pipelines with pandas. Designed combinatorial optimization algorithms to maximize workload across 3–5 year windows, weighted by seniority and educational branch. Generated automated PDF reports with matplotlib visualizations. Reduced analysis time per case from ~2–3 hours to under 1 minute, eliminating manual calculation errors in a critical process.</p>
-      </div>
-      <div class="exp-date">Feb 2026 — Apr 2026</div>
-    </div>
-
-    <div class="exp-card">
-      <div>
-        <div class="exp-role">Administrative Volunteer</div>
-        <div class="exp-company">Banco de Alimentos de Tandil — Tandil, Buenos Aires</div>
-        <p class="exp-desc">Carried out general administrative tasks including cash reconciliation, order management, customer inquiries, document control, and inventory tracking, ensuring correct operational and administrative functioning.</p>
-      </div>
-      <div class="exp-date">Nov 2024 — Dec 2024</div>
-    </div>
-  </div>
-</section>
-
 <!-- CONTACT -->
 <section id="contact">
   <div class="contact-inner">
     <div class="contact-left fade-up">
-      <span class="section-number">06 — Contact</span>
+      <span class="section-number">05 — Contact</span>
       <h2 class="section-title">Let's<br><em style="font-weight:300;font-style:normal;color:var(--blue-soft);">talk.</em></h2>
       <p style="color:var(--text-secondary);margin-top:1.5rem;max-width:300px;line-height:1.8;font-size:13px;">Open to analyst roles, BI projects, and collaborations. Send a message or reach out directly.</p>
       <div style="margin-top:2rem">
