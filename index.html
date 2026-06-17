@@ -753,24 +753,23 @@ function applyLanguage(lang) {
     : '<span class="lang-flag">🇪🇸</span><span class="lang-code">ES</span><span class="lang-sep">/</span><span class="lang-flag">🇬🇧</span><span class="lang-code">EN</span>';
   localStorage.setItem('lang', lang);
 }
+  const cvBtn = document.getElementById("downloadCV");
 
-if (langBtn) {
-  langBtn.addEventListener('click', () => {
-    const current = localStorage.getItem('lang') || 'en';
-    applyLanguage(current === 'en' ? 'es' : 'en');
-  });
-  applyLanguage(localStorage.getItem('lang') || 'en');
+  if (cvBtn) {
+    cvBtn.href =
+      lang === "en"
+        ? "EmanuelEtcheverry_CV.pdf"
+        : "EtcheverryEmanuel_CV.pdf";
+
+    cvBtn.download =
+      lang === "en"
+        ? "EmanuelEtcheverry_CV.pdf"
+        : "EtcheverryEmanuel_CV.pdf";
+  }
+
+  localStorage.setItem('lang', lang);
 }
 
-const cvBtn = document.getElementById("downloadCV");
-if(current === "en"){
-    cvBtn.href = "EmanuelEtcheverry_CV.pdf";
-    cvBtn.download = "EmanuelEtcheverry_CV.pdf";
-} else {
-    cvBtn.href = "EtcheverryEmanuel_CV.pdf";
-    cvBtn.download = "EtcheverryEmanuel_CV.pdf";
-}
-  
 </script>
 </body>
 </html>
