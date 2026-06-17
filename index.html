@@ -754,23 +754,19 @@ function applyLanguage(lang) {
   localStorage.setItem('lang', lang);
 }
 
-if (langBtn) {
-  langBtn.addEventListener('click', () => {
-    const current = localStorage.getItem('lang') || 'en';
-    applyLanguage(current === 'en' ? 'es' : 'en');
-  });
-  applyLanguage(localStorage.getItem('lang') || 'en');
-}
+currentLanguage = currentLanguage === "en" ? "es" : "en";
 
 const cvBtn = document.getElementById("downloadCV");
 
-if(lang === "en"){
+if(currentLanguage === "en"){
     cvBtn.href = "EmanuelEtcheverry_CV.pdf";
     cvBtn.download = "EmanuelEtcheverry_CV.pdf";
 } else {
     cvBtn.href = "EtcheverryEmanuel_CV.pdf";
     cvBtn.download = "EtcheverryEmanuel_CV.pdf";
 }
+
+});
   
 </script>
 </body>
