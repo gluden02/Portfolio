@@ -752,12 +752,9 @@ function applyLanguage(lang) {
     ? '<span class="lang-flag">🇬🇧</span><span class="lang-code">EN</span><span class="lang-sep">/</span><span class="lang-flag">🇪🇸</span><span class="lang-code">ES</span>'
     : '<span class="lang-flag">🇪🇸</span><span class="lang-code">ES</span><span class="lang-sep">/</span><span class="lang-flag">🇬🇧</span><span class="lang-code">EN</span>';
   localStorage.setItem('lang', lang);
-}
-
-
+};
 
 const cvBtn = document.getElementById("downloadCV");
-currentLanguage = currentLanguage === "en" ? "es" : "en";
 if(currentLanguage === "en"){
     cvBtn.href = "EmanuelEtcheverry_CV.pdf";
     cvBtn.download = "EmanuelEtcheverry_CV.pdf";
