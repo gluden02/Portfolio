@@ -762,6 +762,21 @@ if (langBtn) {
   applyLanguage(localStorage.getItem('lang') || 'en');
 }
 
+const downloadCVBtn = document.getElementById("downloadCV");
+
+downloadCVBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    const currentLang = document.documentElement.lang;
+
+    const cvFile =
+        currentLang === "en"
+            ? "EmanuelEtcheverry_CV.pdf"
+            : "EtcheverryEmanuel_CV.pdf";
+
+    window.open(cvFile, "_blank");
+});
+  
 </script>
 </body>
 </html>
