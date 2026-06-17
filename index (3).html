@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" data-lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Emanuel Etcheverry — Data Analyst</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+[data-theme="light"]{
+  --blue:#1a2e4a;--blue-mid:#2c4870;--blue-soft:#3d5f8f;
+  --bg:#f2f4f7;--surface:#e8ecf2;--border:#d0d7e3;
+  --muted:#8a97aa;--text-secondary:#5a6880;
+  --nav-bg:rgba(242,244,247,0.93);--card-bg:#f2f4f7;
+  --about-bg:#1a2e4a;--about-text:#a8bcce;--about-border:#2c4870;
+  --about-key:#3d5f8f;--about-title:#f2f4f7;
+  --deg-bg:#1a2e4a;--deg-text:#ffffff;--deg-sub:rgba(255,255,255,0.55);
+  --deg-year:rgba(255,255,255,0.28);--deg-border:rgba(255,255,255,0.12);
+}
+[data-theme="dark"]{
+  --blue:#c8d8ee;--blue-mid:#3a5580;--blue-soft:#7aa0cc;
+  --bg:#0f1923;--surface:#172230;--border:#253548;
+  --muted:#5a7090;--text-secondary:#8aaac8;
+  --nav-bg:rgba(15,25,35,0.93);--card-bg:#0f1923;
+  --about-bg:#0a1520;--about-text:#7aa0cc;--about-border:#253548;
+  --about-key:#5a7090;--about-title:#c8d8ee;
+  --deg-bg:#172230;--deg-text:#c8d8ee;--deg-sub:rgba(168,188,206,0.65);
+  --deg-year:rgba(122,160,204,0.35);--deg-border:#253548;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--blue);font-family:'Sora',system-ui,sans-serif;font-size:14px;font-weight:300;line-height:1.7;-webkit-font-smoothing:antialiased;transition:background .3s,color .3s}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1rem 2.5rem;background:var(--nav-bg);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);transition:background .3s,border-color .3s}
+.nav-logo{font-size:1rem;font-weight:600;text-decoration:none;color:var(--blue)}
+.nav-center{display:flex;list-style:none}
+.nav-center a{display:block;text-decoration:none;color:var(--text-secondary);font-size:11px;font-weight:400;letter-spacing:.1em;text-transform:uppercase;padding:.4rem .85rem;border-radius:4px;transition:color .2s,background .2s}
+.nav-center a:hover{color:var(--blue);background:var(--surface)}
+.nav-center a.active{color:var(--blue);font-weight:500}
+.nav-right{display:flex;align-items:center;gap:0.75rem}
+.theme-btn, .lang-btn{width:36px;height:36px;border-radius:50%;border:1px solid var(--border);background:var(--surface);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--blue);transition:border-color .2s;font-size:18px}
+.theme-btn:hover, .lang-btn:hover{border-color:var(--blue-soft)}
+.theme-btn svg{width:16px;height:16px}
+.lang-btn{font-size:16px;padding:0}
+
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:0 2.5rem;gap:4rem;padding-top:72px}
+.hero-left{max-width:560px}
+.hero-eyebrow{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:1.5rem;display:flex;align-items:center;gap:.75rem}
+.hero-eyebrow::before{content:'';display:block;width:32px;height:1px;background:var(--muted)}
+.hero-name{font-weight:600;font-size:clamp(3rem,5.5vw,4.8rem);line-height:1.05;letter-spacing:-.03em;margin-bottom:1.5rem;color:var(--blue)}
+.hero-name em{font-style:normal;font-weight:300;color:var(--blue-soft)}
+.hero-desc{font-size:14px;color:var(--text-secondary);line-height:1.8;max-width:420px;margin-bottom:1.75rem}
+.hero-social{display:flex;gap:.75rem;margin-bottom:2rem}
+.social-icon-link{width:38px;height:38px;border-radius:50%;border:1px solid var(--border);background:var(--surface);display:flex;align-items:center;justify-content:center;text-decoration:none;color:var(--muted);transition:all .2s}
+.social-icon-link:hover{border-color:var(--blue-soft);color:var(--blue)}
+.social-icon-link svg{width:16px;height:16px}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.7rem 1.4rem;font-family:'Sora',sans-serif;font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:all .2s;border:none;border-radius:4px}
+.btn-primary{background:var(--blue);color:#fff}
+.btn-primary:hover{background:var(--blue-soft)}
+.btn-secondary{border:1px solid var(--border);color:var(--blue);background:transparent}
+.btn-secondary:hover{border-color:var(--blue-soft);color:var(--blue-soft)}
+.hero-right{position:relative;height:500px}
+.hero-img{width:100%;height:100%;background:var(--surface);border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:14px}
+
+.section-title{font-size:clamp(2rem,4vw,2.8rem);font-weight:600;margin-bottom:3rem;color:var(--blue)}
+section{padding:4rem 2.5rem}
+section[id]{scroll-margin-top:72px}
+
+.about{background:var(--about-bg);color:var(--about-text)}
+.about .section-title{color:var(--about-title)}
+.about-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem}
+.about-card{padding:2rem;border:1px solid var(--about-border);border-radius:8px;backdrop-filter:blur(4px)}
+.about-card-key{color:var(--about-key);font-size:12px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.5rem;font-weight:600}
+.about-card-value{font-size:16px;line-height:1.6}
+
+.experience{background:var(--bg)}
+.exp-item{margin-bottom:3rem;padding-bottom:2rem;border-bottom:1px solid var(--border)}
+.exp-item:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.exp-title{font-size:16px;font-weight:600;color:var(--blue);margin-bottom:.25rem}
+.exp-company{font-size:13px;color:var(--muted);margin-bottom:1rem}
+.exp-dates{font-size:12px;color:var(--text-secondary);margin-bottom:.75rem}
+.exp-desc{font-size:14px;color:var(--text-secondary);line-height:1.8;margin-left:1.5rem;margin-top:1rem}
+.exp-desc li{margin-bottom:.5rem}
+
+.projects{background:var(--card-bg)}
+.slider-container{position:relative;overflow:hidden;border-radius:8px;background:var(--surface);margin-bottom:2rem}
+.slider-track{display:flex;transition:transform .6s ease-out}
+.slider-track > *{flex:0 0 100%;padding:2rem}
+.proj-card{background:var(--surface);border-radius:8px;padding:2rem}
+.proj-title{font-size:16px;font-weight:600;color:var(--blue);margin-bottom:.5rem}
+.proj-date{font-size:12px;color:var(--muted);margin-bottom:1rem}
+.proj-desc{font-size:14px;color:var(--text-secondary);line-height:1.8;margin-bottom:1.5rem}
+.proj-tech{display:flex;flex-wrap:wrap;gap:.5rem}
+.proj-tag{background:var(--border);color:var(--blue);padding:.3rem .75rem;border-radius:12px;font-size:11px;font-weight:500}
+.proj-link{display:inline-flex;align-items:center;gap:.5rem;text-decoration:none;color:var(--blue);font-size:12px;font-weight:600;margin-top:1rem;transition:color .2s}
+.proj-link:hover{color:var(--blue-soft)}
+.proj-link img{width:16px;height:16px}
+
+.slider-nav{display:flex;justify-content:space-between;align-items:center;margin-bottom:2rem}
+.slider-nav-btn{background:var(--surface);border:1px solid var(--border);width:36px;height:36px;border-radius:4px;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--blue);transition:all .2s}
+.slider-nav-btn:hover{border-color:var(--blue-soft);color:var(--blue-soft)}
+.slider-dots{display:flex;gap:.5rem;justify-content:center}
+.slider-dot{width:8px;height:8px;border-radius:50%;background:var(--border);cursor:pointer;transition:background .2s}
+.slider-dot.active{background:var(--blue)}
+
+.certifications{background:var(--card-bg)}
+.cert-main-container{display:grid;grid-template-columns:1.2fr 1fr;gap:3rem;margin-bottom:4rem;align-items:stretch}
+.cert-ibm{background:var(--surface);border-radius:8px;padding:3rem;border:2px solid var(--blue);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;position:relative;overflow:hidden}
+.cert-ibm::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(135deg,var(--blue) 0%,var(--blue-soft) 100%);opacity:0.05;z-index:0}
+.cert-ibm-inner{position:relative;z-index:1;width:100%}
+.cert-ibm-badge{width:120px;height:120px;margin:0 auto 1.5rem;background:var(--surface);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:48px;font-weight:600;color:var(--blue);border:3px solid var(--blue)}
+.cert-ibm-title{font-size:24px;font-weight:600;color:var(--blue);margin-bottom:.5rem}
+.cert-ibm-desc{font-size:13px;color:var(--text-secondary);line-height:1.7;margin-bottom:1.5rem;max-width:320px;margin-left:auto;margin-right:auto}
+.cert-ibm-date{font-size:11px;color:var(--muted);margin-bottom:1.5rem}
+.cert-ibm-link{display:inline-flex;align-items:center;gap:.5rem;text-decoration:none;color:#fff;background:var(--blue);padding:.6rem 1.2rem;border-radius:4px;font-size:12px;font-weight:600;transition:background .2s}
+.cert-ibm-link:hover{background:var(--blue-soft)}
+
+.cert-carousel{background:var(--surface);border-radius:8px;padding:2rem}
+.cert-carousel-track{display:flex;transition:transform .6s ease-out;gap:2rem}
+.cert-carousel-track > *{flex:0 0 100%}
+.cert-card{text-align:center}
+.cert-card-badge{width:100px;height:100px;margin:0 auto 1rem;background:var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:36px;font-weight:600;color:var(--blue);border:2px solid var(--border)}
+.cert-card-title{font-size:16px;font-weight:600;color:var(--blue);margin-bottom:.5rem}
+.cert-card-desc{font-size:12px;color:var(--text-secondary);margin-bottom:1rem;line-height:1.6}
+.cert-card-date{font-size:11px;color:var(--muted);margin-bottom:1.5rem}
+.cert-card-link{display:inline-flex;align-items:center;gap:.4rem;text-decoration:none;color:var(--blue);font-size:11px;font-weight:600;transition:color .2s}
+.cert-card-link:hover{color:var(--blue-soft)}
+
+.cert-carousel-nav{display:flex;justify-content:center;gap:.5rem;margin-top:2rem}
+.cert-carousel-dot{width:8px;height:8px;border-radius:50%;background:var(--border);cursor:pointer;transition:background .2s}
+.cert-carousel-dot.active{background:var(--blue)}
+
+.skills{background:var(--bg)}
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2rem}
+.skill-category{padding:1.5rem;background:var(--surface);border-radius:8px;border:1px solid var(--border)}
+.skill-name{font-size:16px;font-weight:600;color:var(--blue);margin-bottom:1rem}
+.skill-list{display:flex;flex-wrap:wrap;gap:.5rem}
+.skill-tag{background:var(--border);color:var(--blue);padding:.4rem .75rem;border-radius:4px;font-size:12px;font-weight:500}
+
+.education{background:var(--card-bg)}
+.edu-item{margin-bottom:2rem;padding:2rem;background:var(--deg-bg);border-radius:8px;border:1px solid var(--deg-border);color:var(--deg-text)}
+.edu-title{font-size:16px;font-weight:600;margin-bottom:.5rem}
+.edu-subtitle{font-size:13px;color:var(--deg-sub);margin-bottom:.25rem}
+.edu-year{font-size:11px;color:var(--deg-year)}
+
+.contact{background:var(--about-bg);color:var(--about-text)}
+.contact .section-title{color:var(--about-title)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem}
+.contact-info{display:flex;flex-direction:column;gap:1.5rem}
+.contact-item{display:flex;gap:1rem}
+.contact-label{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--about-key);font-weight:600;min-width:100px}
+.contact-value{font-size:14px;color:var(--about-text)}
+.contact-value a{color:var(--about-text);text-decoration:none;border-bottom:1px solid var(--about-border);transition:border-color .2s}
+.contact-value a:hover{border-color:var(--about-text)}
+
+.form-group{margin-bottom:1.5rem;display:flex;flex-direction:column}
+.form-label{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--about-key);font-weight:600;margin-bottom:.5rem}
+.form-input,.form-textarea{background:var(--about-border);border:none;color:var(--about-text);padding:.75rem 1rem;border-radius:4px;font-family:'Sora',sans-serif;font-size:14px;transition:background .2s}
+.form-input::placeholder,.form-textarea::placeholder{color:var(--about-key)}
+.form-input:focus,.form-textarea:focus{outline:none;background:rgba(255,255,255,0.1)}
+.form-textarea{resize:vertical;min-height:120px}
+.form-submit{background:var(--about-title);color:var(--about-bg);padding:.7rem 1.4rem;border:none;border-radius:4px;font-weight:600;cursor:pointer;transition:opacity .2s}
+.form-submit:hover:not(:disabled){opacity:0.9}
+.form-submit:disabled{opacity:0.6;cursor:not-allowed}
+.form-msg{font-size:13px;margin-top:1rem;padding:.75rem;border-radius:4px}
+.form-msg.error{background:rgba(220,38,38,0.2);color:var(--about-title)}
+.form-msg.success{background:rgba(34,197,94,0.2);color:var(--about-title)}
+
+footer{text-align:center;padding:2rem;color:var(--text-secondary);font-size:12px;border-top:1px solid var(--border)}
+
+@media(max-width:1024px){.hero{grid-template-columns:1fr;padding-top:100px}.hero-right{height:300px}.cert-main-container{grid-template-columns:1fr}.contact-grid{grid-template-columns:1fr}}
+
+@media(max-width:640px){nav{padding:1rem;flex-direction:column;gap:1rem}.nav-center{flex-wrap:wrap;justify-content:center;gap:.5rem}.hero{gap:2rem;padding:0 1.5rem;padding-top:100px}.section-title{font-size:1.8rem}.about-grid{grid-template-columns:1fr}.slider-track > *{padding:1.5rem}.skills-grid{grid-template-columns:1fr}.contact-grid{grid-template-columns:1fr}}
+
+.fade-up{opacity:0;transform:translateY(20px);transition:opacity .6s ease-out,transform .6s ease-out}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">Emanuel Etcheverry</a>
+  <ul class="nav-center">
+    <li><a href="#about" data-en="About" data-es="Sobre mí">About</a></li>
+    <li><a href="#experience" data-en="Experience" data-es="Experiencia">Experience</a></li>
+    <li><a href="#projects" data-en="Projects" data-es="Proyectos">Projects</a></li>
+    <li><a href="#skills" data-en="Skills" data-es="Habilidades">Skills</a></li>
+    <li><a href="#contact" data-en="Contact" data-es="Contacto">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="lang-btn" id="langToggle" title="Toggle language">🇬🇧</button>
+    <button class="theme-btn" id="themeToggle" title="Toggle theme">
+      <svg id="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="5"></circle>
+        <line x1="12" y1="1" x2="12" y2="3"></line>
+        <line x1="12" y1="21" x2="12" y2="23"></line>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+        <line x1="1" y1="12" x2="3" y2="12"></line>
+        <line x1="21" y1="12" x2="23" y2="12"></line>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+      </svg>
+      <svg id="icon-moon" style="display:none" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+      </svg>
+    </button>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-left fade-up">
+    <div class="hero-eyebrow" data-en="DATA ANALYST · ARGENTINA" data-es="DATA ANALYST · ARGENTINA">DATA ANALYST · ARGENTINA</div>
+    <h1 class="hero-name">Emanuel <em>Etcheverry</em></h1>
+    <p class="hero-desc" data-en="Data Analyst & Business Analyst with expertise in Python, SQL, and Power BI. I turn data into actionable insights to drive decision-making. Currently based in Tandil, Argentina." data-es="Data Analyst & Business Analyst con expertise en Python, SQL y Power BI. Convierto datos en insights accionables para impulsar la toma de decisiones. Actualmente en Tandil, Argentina.">Data Analyst & Business Analyst with expertise in Python, SQL, and Power BI. I turn data into actionable insights to drive decision-making. Currently based in Tandil, Argentina.</p>
+    <div class="hero-social">
+      <a href="https://linkedin.com/in/etcheverryemanuel" target="_blank" class="social-icon-link" title="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"/></svg>
+      </a>
+      <a href="https://github.com/etcheverryemanuel" target="_blank" class="social-icon-link" title="GitHub">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v 3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+      </a>
+    </div>
+    <div class="hero-actions">
+      <a href="#contact" class="btn btn-primary" data-en="Get in touch" data-es="Contactame">Get in touch</a>
+      <a href="/resume.pdf" target="_blank" class="btn btn-secondary" data-en="Download CV" data-es="Descargar CV">Download CV</a>
+    </div>
+  </div>
+  <div class="hero-right fade-up">
+    <div class="hero-img" data-en="📊" data-es="📊">📊</div>
+  </div>
+</section>
+
+<section id="about" class="about fade-up">
+  <h2 class="section-title" data-en="About me" data-es="Sobre mí">About me</h2>
+  <div class="about-grid">
+    <div class="about-card fade-up">
+      <div class="about-card-key" data-en="Role" data-es="Rol">Role</div>
+      <div class="about-card-value" data-en="Data Analyst & Business Analyst" data-es="Data Analyst & Business Analyst">Data Analyst & Business Analyst</div>
+    </div>
+    <div class="about-card fade-up">
+      <div class="about-card-key" data-en="Location" data-es="Ubicación">Location</div>
+      <div class="about-card-value" data-en="Tandil, Buenos Aires, Argentina" data-es="Tandil, Buenos Aires, Argentina">Tandil, Buenos Aires, Argentina</div>
+    </div>
+    <div class="about-card fade-up">
+      <div class="about-card-key" data-en="Education" data-es="Educación">Education</div>
+      <div class="about-card-value" data-en="B.S. in Technology Management, UNICEN" data-es="Lic. en Gestión Tecnológica, UNICEN">B.S. in Technology Management, UNICEN</div>
+    </div>
+    <div class="about-card fade-up">
+      <div class="about-card-key" data-en="Languages" data-es="Idiomas">Languages</div>
+      <div class="about-card-value" data-en="Spanish (Native), English (C2)" data-es="Español (Nativo), Inglés (C2)">Spanish (Native), English (C2)</div>
+    </div>
+    <div class="about-card fade-up">
+      <div class="about-card-key" data-en="Expertise" data-es="Especialidad">Expertise</div>
+      <div class="about-card-value" data-en="Python, SQL, Power BI, DAX, Data Modeling" data-es="Python, SQL, Power BI, DAX, Modelado de Datos">Python, SQL, Power BI, DAX, Data Modeling</div>
+    </div>
+    <div class="about-card fade-up">
+      <div class="about-card-key" data-en="Focus" data-es="Enfoque">Focus</div>
+      <div class="about-card-value" data-en="Process automation, exploratory analysis, decision dashboards" data-es="Automatización de procesos, análisis exploratorio, dashboards de decisión">Process automation, exploratory analysis, decision dashboards</div>
+    </div>
+  </div>
+</section>
+
+<section id="experience" class="experience fade-up">
+  <h2 class="section-title" data-en="Experience" data-es="Experiencia">Experience</h2>
+  
+  <div class="exp-item fade-up">
+    <div class="exp-title" data-en="Process Automation Lead" data-es="Responsable de Automatización de Procesos">Process Automation Lead</div>
+    <div class="exp-company" data-en="Castellá & Dorronsoro — Las Flores, Buenos Aires" data-es="Castellá & Dorronsoro — Las Flores, Buenos Aires">Castellá & Dorronsoro — Las Flores, Buenos Aires</div>
+    <div class="exp-dates">Feb 2026 – Apr 2026</div>
+    <ul class="exp-desc">
+      <li data-en="Led end-to-end development of a Python application to automate retirement benefit calculations, replacing a 100% manual process." data-es="Lideré el desarrollo de una aplicación en Python que automatiza el cálculo jubilatorio reemplazando un proceso 100% manual.">Led end-to-end development of a Python application to automate retirement benefit calculations, replacing a 100% manual process.</li>
+      <li data-en="Built data cleaning and preprocessing pipelines with Pandas; designed combinatorial optimization algorithms weighted by seniority and education branch." data-es="Implementé pipelines de data cleaning y preprocessing con Pandas, diseñé algoritmos de optimización combinatoria con ponderación por antigüedad y rama educativa.">Built data cleaning and preprocessing pipelines with Pandas; designed combinatorial optimization algorithms weighted by seniority and education branch.</li>
+      <li data-en="Generated automated PDF reports with Matplotlib visualizations. Reduced analysis time per case from 3+ hours to under 1 minute, eliminating manual calculation errors in a legally critical workflow." data-es="Generé reportes automáticos en PDF con Matplotlib. Redujo el tiempo de análisis por expediente de más de 3 horas a menos de 1 minuto, eliminando errores manuales.">Generated automated PDF reports with Matplotlib visualizations. Reduced analysis time per case from 3+ hours to under 1 minute, eliminating manual calculation errors in a legally critical workflow.</li>
+    </ul>
+  </div>
+
+  <div class="exp-item fade-up">
+    <div class="exp-title" data-en="Administrative Volunteer" data-es="Voluntariado Administrativo">Administrative Volunteer</div>
+    <div class="exp-company" data-en="Banco de Alimentos de Tandil — Tandil, Buenos Aires" data-es="Banco de Alimentos de Tandil — Tandil, Buenos Aires">Banco de Alimentos de Tandil — Tandil, Buenos Aires</div>
+    <div class="exp-dates">Nov 2024 – Dec 2024</div>
+    <ul class="exp-desc">
+      <li data-en="Performed general administrative tasks: cash reconciliation, order management, documentation control, and inventory tracking." data-es="Realicé tareas administrativas generales: arqueo de caja, gestión de pedidos, control de documentación e inventario.">Performed general administrative tasks: cash reconciliation, order management, documentation control, and inventory tracking.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="projects" class="projects fade-up">
+  <h2 class="section-title" data-en="Featured projects" data-es="Proyectos destacados">Featured projects</h2>
+  
+  <div class="slider-nav">
+    <button class="slider-nav-btn" id="projPrev">←</button>
+    <div class="slider-dots" id="projDots"></div>
+    <button class="slider-nav-btn" id="projNext">→</button>
+  </div>
+
+  <div class="slider-container">
+    <div class="slider-track" id="projTrack">
+      
+      <div class="proj-card fade-up">
+        <div class="proj-title" data-en="Job Market EDA & Data Cleaning" data-es="EDA y Limpieza de Datos del Mercado Laboral">Job Market EDA & Data Cleaning</div>
+        <div class="proj-date">Jan 2026</div>
+        <div class="proj-desc" data-en="Cleaned and explored a Glassdoor job listings dataset in MySQL: deduplication via Window Functions, null handling, and data standardization. Delivered insights on Data Analytics and Data Science roles through an interactive Power BI dashboard with DAX metrics." data-es="Limpié y exploré un dataset de ofertas laborales de Glassdoor en MySQL: deduplicación mediante Window Functions, manejo de nulos y estandarización. Entregué insights sobre roles de Data Analytics y Data Science a través de un dashboard interactivo en Power BI.">Cleaned and explored a Glassdoor job listings dataset in MySQL: deduplication via Window Functions, null handling, and data standardization. Delivered insights on Data Analytics and Data Science roles through an interactive Power BI dashboard with DAX metrics.</div>
+        <div class="proj-tech">
+          <span class="proj-tag">SQL</span>
+          <span class="proj-tag">MySQL</span>
+          <span class="proj-tag">Power BI</span>
+          <span class="proj-tag">DAX</span>
+        </div>
+        <a href="#" class="proj-link" data-en="View document " data-es="Ver documento ">View document <span>🔗</span></a>
+      </div>
+
+      <div class="proj-card fade-up">
+        <div class="proj-title" data-en="Demographic Pressure & School Coverage in Buenos Aires" data-es="Presión Demográfica y Cobertura Educativa en PBA">Demographic Pressure & School Coverage in Buenos Aires</div>
+        <div class="proj-date">Jul 2025</div>
+        <div class="proj-desc" data-en="Integrated official government datasets to assess demographic impact on school infrastructure across municipalities. Built a relational data model, defined KPIs in DAX, and delivered an interactive Power BI dashboard to support evidence-based decision-making." data-es="Integré datasets oficiales para evaluar el impacto demográfico en la infraestructura escolar. Construí un modelo relacional, definí KPIs en DAX y entregué un dashboard interactivo en Power BI para apoyar la toma de decisiones.">Integrated official government datasets to assess demographic impact on school infrastructure across municipalities. Built a relational data model, defined KPIs in DAX, and delivered an interactive Power BI dashboard to support evidence-based decision-making.</div>
+        <div class="proj-tech">
+          <span class="proj-tag">Python</span>
+          <span class="proj-tag">Power BI</span>
+          <span class="proj-tag">DAX</span>
+          <span class="proj-tag">Data Modeling</span>
+        </div>
+        <a href="#" class="proj-link" data-en="View document 🇪🇸" data-es="Ver documento 🇪🇸">View document <span>🇪🇸</span></a>
+      </div>
+
+      <div class="proj-card fade-up">
+        <div class="proj-title" data-en="Language Learning Pipeline Automation" data-es="Automatización de Pipeline para Aprendizaje de Idioma">Language Learning Pipeline Automation</div>
+        <div class="proj-date">Feb 2026</div>
+        <div class="proj-desc" data-en="Developed a script to automate vocabulary conversion for language learning. Used Pandas for text preprocessing and integrated external APIs for EN–ES translation and definition extraction into a structured dataset." data-es="Desarrollé un script para optimizar el aprendizaje de idiomas mediante conversión de vocabulario. Usé Pandas para preprocesamiento de texto e integré APIs externas para traducción (EN-ES) y extracción de definiciones.">Developed a script to automate vocabulary conversion for language learning. Used Pandas for text preprocessing and integrated external APIs for EN–ES translation and definition extraction into a structured dataset.</div>
+        <div class="proj-tech">
+          <span class="proj-tag">Python</span>
+          <span class="proj-tag">Pandas</span>
+          <span class="proj-tag">APIs</span>
+          <span class="proj-tag">REST</span>
+        </div>
+        <a href="#" class="proj-link" data-en="View document " data-es="Ver documento ">View document <span>🔗</span></a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="certifications" class="certifications fade-up">
+  <h2 class="section-title" data-en="Certifications" data-es="Certificaciones">Certifications</h2>
+  
+  <div class="cert-main-container">
+    <!-- IBM Certificate - Static & Prominent -->
+    <div class="cert-ibm fade-up">
+      <div class="cert-ibm-inner">
+        <div class="cert-ibm-badge">IBM</div>
+        <div class="cert-ibm-title" data-en="Data Analyst Professional Certificate" data-es="Certificado Profesional en Data Analyst">Data Analyst Professional Certificate</div>
+        <div class="cert-ibm-desc" data-en="Completed 11 comprehensive courses covering data analysis, Python, SQL, Excel, Power BI, and Cognos Analytics. Equipped with entry-level role proficiency in data manipulation, analysis, and visualization." data-es="Completé 11 cursos cubriendo análisis de datos, Python, SQL, Excel, Power BI y Cognos. Equipado con competencias de nivel entrada en manipulación, análisis y visualización de datos.">Completed 11 comprehensive courses covering data analysis, Python, SQL, Excel, Power BI, and Cognos Analytics. Equipped with entry-level role proficiency in data manipulation, analysis, and visualization.</div>
+        <div class="cert-ibm-date">Jun 11, 2026</div>
+        <a href="https://coursera.org/verify/professional-cert/89DK1OHZ0F8D" target="_blank" class="cert-ibm-link" data-en="Verify credential →" data-es="Verificar credencial →">Verify credential →</a>
+      </div>
+    </div>
+
+    <!-- Other Certifications Carousel -->
+    <div class="cert-carousel fade-up">
+      <div class="cert-carousel-track" id="certTrack">
+        <div class="cert-card">
+          <div class="cert-card-badge">EF</div>
+          <div class="cert-card-title" data-en="EF SET English Certificate" data-es="Certificado EF SET de Inglés">EF SET English Certificate</div>
+          <div class="cert-card-desc" data-en="C2 Proficient (74/100) | Reading: C2, Listening: C1" data-es="C2 Proficiente (74/100) | Lectura: C2, Escucha: C1">C2 Proficient (74/100) | Reading: C2, Listening: C1</div>
+          <div class="cert-card-date">Jun 11, 2026</div>
+          <a href="https://cert.efset.org/es/3Apfip" target="_blank" class="cert-card-link" data-en="Verify →" data-es="Verificar →">Verify →</a>
+        </div>
+      </div>
+      <div class="cert-carousel-nav" id="certDots"></div>
+    </div>
+  </div>
+</section>
+
+<section id="skills" class="skills fade-up">
+  <h2 class="section-title" data-en="Technical skills" data-es="Habilidades técnicas">Technical skills</h2>
+  <div class="skills-grid">
+    <div class="skill-category fade-up">
+      <div class="skill-name" data-en="Python & Data Processing" data-es="Python & Procesamiento de Datos">Python & Data Processing</div>
+      <div class="skill-list">
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">Pandas</span>
+        <span class="skill-tag">NumPy</span>
+        <span class="skill-tag">Matplotlib</span>
+        <span class="skill-tag">BeautifulSoup4</span>
+        <span class="skill-tag">Requests</span>
+      </div>
+    </div>
+    <div class="skill-category fade-up">
+      <div class="skill-name" data-en="Power BI & Visualization" data-es="Power BI & Visualización">Power BI & Visualization</div>
+      <div class="skill-list">
+        <span class="skill-tag">Power BI</span>
+        <span class="skill-tag">DAX</span>
+        <span class="skill-tag">Power Query</span>
+        <span class="skill-tag">Star Schema</span>
+        <span class="skill-tag">API Integration</span>
+      </div>
+    </div>
+    <div class="skill-category fade-up">
+      <div class="skill-name" data-en="Databases & SQL" data-es="Bases de Datos & SQL">Databases & SQL</div>
+      <div class="skill-list">
+        <span class="skill-tag">SQL</span>
+        <span class="skill-tag">MySQL</span>
+        <span class="skill-tag">CTEs</span>
+        <span class="skill-tag">Joins</span>
+        <span class="skill-tag">Window Functions</span>
+        <span class="skill-tag">Snowflake</span>
+      </div>
+    </div>
+    <div class="skill-category fade-up">
+      <div class="skill-name" data-en="Tools & Other" data-es="Herramientas y Otros">Tools & Other</div>
+      <div class="skill-list">
+        <span class="skill-tag">Excel</span>
+        <span class="skill-tag">VBA</span>
+        <span class="skill-tag">Git</span>
+        <span class="skill-tag">dbt</span>
+        <span class="skill-tag">REST APIs</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="education" class="education fade-up">
+  <h2 class="section-title" data-en="Education & Certifications" data-es="Educación y Certificaciones">Education & Certifications</h2>
+  
+  <div class="edu-item fade-up">
+    <div class="edu-title" data-en="B.S. in Technology Management" data-es="Licenciatura en Gestión Tecnológica">B.S. in Technology Management</div>
+    <div class="edu-subtitle" data-en="UNICEN, Tandil, Buenos Aires" data-es="UNICEN, Tandil, Buenos Aires">UNICEN, Tandil, Buenos Aires</div>
+    <div class="edu-year">2021 – 2026</div>
+  </div>
+
+  <div class="edu-item fade-up">
+    <div class="edu-title" data-en="IBM Data Analyst Professional Certificate" data-es="Certificado Profesional IBM en Data Analyst">IBM Data Analyst Professional Certificate</div>
+    <div class="edu-subtitle" data-en="IBM via Coursera" data-es="IBM vía Coursera">IBM via Coursera</div>
+    <div class="edu-year">2026</div>
+  </div>
+
+  <div class="edu-item fade-up">
+    <div class="edu-title" data-en="EF SET English Certificate - C2 Proficient" data-es="Certificado EF SET de Inglés - C2 Proficiente">EF SET English Certificate - C2 Proficient</div>
+    <div class="edu-subtitle" data-en="EF English First" data-es="EF English First">EF English First</div>
+    <div class="edu-year">2026</div>
+  </div>
+</section>
+
+<section id="contact" class="contact fade-up">
+  <div style="max-width:900px;margin:0 auto">
+    <h2 class="section-title" data-en="Get in touch" data-es="Contactame">Get in touch</h2>
+    <div class="contact-grid">
+      <div class="contact-info fade-up">
+        <div class="contact-item">
+          <span class="contact-label" data-en="Email" data-es="Email">Email</span>
+          <span class="contact-value"><a href="mailto:etcheverryemanuel0@gmail.com">etcheverryemanuel0@gmail.com</a></span>
+        </div>
+        <div class="contact-item">
+          <span class="contact-label" data-en="Phone" data-es="Teléfono">Phone</span>
+          <span class="contact-value"><a href="tel:+542494376120">+54 (249) 437-6120</a></span>
+        </div>
+        <div class="contact-item">
+          <span class="contact-label" data-en="Location" data-es="Ubicación">Location</span>
+          <span class="contact-value" data-en="Tandil, Buenos Aires, Argentina" data-es="Tandil, Buenos Aires, Argentina">Tandil, Buenos Aires, Argentina</span>
+        </div>
+        <div class="contact-item">
+          <span class="contact-label" data-en="LinkedIn" data-es="LinkedIn">LinkedIn</span>
+          <span class="contact-value"><a href="https://linkedin.com/in/etcheverryemanuel" target="_blank">linkedin.com/in/etcheverryemanuel</a></span>
+        </div>
+        <div class="contact-item">
+          <span class="contact-label" data-en="GitHub" data-es="GitHub">GitHub</span>
+          <span class="contact-value"><a href="https://github.com/etcheverryemanuel" target="_blank">github.com/etcheverryemanuel</a></span>
+        </div>
+      </div>
+      <form class="contact-form fade-up">
+        <div class="form-group">
+          <label class="form-label" data-en="Name" data-es="Nombre">Name</label>
+          <input type="text" id="fname" class="form-input" placeholder="Your name" data-placeholder-en="Your name" data-placeholder-es="Tu nombre">
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-en="Email" data-es="Email">Email</label>
+          <input type="email" id="femail" class="form-input" placeholder="your@email.com" data-placeholder-en="your@email.com" data-placeholder-es="tu@email.com">
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-en="Message" data-es="Mensaje">Message</label>
+          <textarea id="fmsg" class="form-textarea" placeholder="Your message..." data-placeholder-en="Your message..." data-placeholder-es="Tu mensaje..."></textarea>
+        </div>
+        <button type="button" id="formSubmit" class="form-submit" data-en="Send message" data-es="Enviar mensaje">
+          <span data-en="Send message" data-es="Enviar mensaje">Send message</span>
+        </button>
+        <div id="formMsg"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer data-en="© 2026 Emanuel Etcheverry. Built with ❤️" data-es="© 2026 Emanuel Etcheverry. Construido con ❤️">© 2026 Emanuel Etcheverry. Built with ❤️</footer>
+
+<script>
+// LANGUAGE SWITCHER
+const htmlEl = document.documentElement;
+const langBtn = document.getElementById('langToggle');
+const currentLang = localStorage.getItem('lang') || 'en';
+
+function setLanguage(lang) {
+  htmlEl.setAttribute('data-lang', lang);
+  localStorage.setItem('lang', lang);
+  langBtn.textContent = lang === 'en' ? '🇬🇧' : '🇪🇸';
+  
+  // Update all text elements
+  document.querySelectorAll('[data-en]').forEach(el => {
+    const text = lang === 'en' ? el.getAttribute('data-en') : el.getAttribute('data-es');
+    if (text) el.textContent = text;
+  });
+
+  // Update form placeholders
+  document.querySelectorAll('[data-placeholder-en]').forEach(el => {
+    const placeholder = lang === 'en' ? el.getAttribute('data-placeholder-en') : el.getAttribute('data-placeholder-es');
+    if (placeholder) el.placeholder = placeholder;
+  });
+
+  // Update button text
+  document.getElementById('formSubmit').querySelector('span').textContent = 
+    lang === 'en' ? 'Send message' : 'Enviar mensaje';
+
+  // Update page title
+  document.title = lang === 'en' ? 'Emanuel Etcheverry — Data Analyst' : 'Emanuel Etcheverry — Data Analyst';
+}
+
+setLanguage(currentLang);
+langBtn.addEventListener('click', () => {
+  const newLang = htmlEl.getAttribute('data-lang') === 'en' ? 'es' : 'en';
+  setLanguage(newLang);
+});
+
+// THEME SWITCHER
+const themeBtn = document.getElementById('themeToggle');
+const iconSun = document.getElementById('icon-sun');
+const iconMoon = document.getElementById('icon-moon');
+
+function setTheme(t) {
+  htmlEl.setAttribute('data-theme', t);
+  localStorage.setItem('theme', t);
+  iconSun.style.display = t === 'dark' ? 'block' : 'none';
+  iconMoon.style.display = t === 'light' ? 'block' : 'none';
+}
+
+setTheme(localStorage.getItem('theme') || 'light');
+themeBtn.addEventListener('click', () => {
+  setTheme(htmlEl.getAttribute('data-theme') === 'light' ? 'dark' : 'light');
+});
+
+// FADE UP ANIMATION
+const fadeObs = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 70);
+    }
+  });
+}, { threshold: 0.08 });
+document.querySelectorAll('.fade-up').forEach(el => fadeObs.observe(el));
+
+// NAVIGATION ACTIVE STATE
+const secs = document.querySelectorAll('section[id]');
+const navAs = document.querySelectorAll('.nav-center a');
+const navObs = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navAs.forEach(a => a.classList.remove('active'));
+      const a = document.querySelector('.nav-center a[href="#' + entry.target.id + '"]');
+      if (a) a.classList.add('active');
+    }
+  });
+}, { threshold: 0.35 });
+secs.forEach(s => navObs.observe(s));
+
+// CAROUSEL FUNCTION
+function makeSlider(trackId, dotsId, prevId, nextId, dotClass, autoInterval) {
+  const track = document.getElementById(trackId);
+  const slides = track.querySelectorAll(':scope > *');
+  const dotsWrap = document.getElementById(dotsId);
+  let cur = 0, autoT;
+
+  slides.forEach((_, i) => {
+    const d = document.createElement('span');
+    d.className = dotClass + (i === 0 ? ' active' : '');
+    d.addEventListener('click', () => go(i));
+    dotsWrap.appendChild(d);
+  });
+
+  function go(idx) {
+    cur = (idx + slides.length) % slides.length;
+    track.style.transform = 'translateX(-' + cur * 100 + '%)';
+    dotsWrap.querySelectorAll('span').forEach((d, i) => d.classList.toggle('active', i === cur));
+    clearInterval(autoT);
+    autoT = setInterval(() => go(cur + 1), autoInterval);
+  }
+
+  if (document.getElementById(prevId)) document.getElementById(prevId).addEventListener('click', () => go(cur - 1));
+  if (document.getElementById(nextId)) document.getElementById(nextId).addEventListener('click', () => go(cur + 1));
+  
+  autoT = setInterval(() => go(cur + 1), autoInterval);
+}
+
+makeSlider('projTrack', 'projDots', 'projPrev', 'projNext', 'proj-dot', 8000);
+makeSlider('certTrack', 'certDots', 'certPrev', 'certNext', 'cert-dot', 5000);
+
+// CONTACT FORM
+const formSubmit = document.getElementById('formSubmit');
+const formMsg = document.getElementById('formMsg');
+
+formSubmit.addEventListener('click', async () => {
+  const name = document.getElementById('fname').value.trim();
+  const email = document.getElementById('femail').value.trim();
+  const message = document.getElementById('fmsg').value.trim();
+
+  const lang = htmlEl.getAttribute('data-lang');
+  const errorMsg = lang === 'en' ? 'Please fill in all fields.' : 'Por favor completa todos los campos.';
+  const emailErrorMsg = lang === 'en' ? 'Please enter a valid email.' : 'Por favor ingresa un email válido.';
+  const sendingMsg = lang === 'en' ? 'Sending…' : 'Enviando…';
+  const successMsg = lang === 'en' ? "Message sent! I'll get back to you soon." : '¡Mensaje enviado! Pronto te responderé.';
+  const errorSubmitMsg = lang === 'en' ? 'Something went wrong. Try emailing directly.' : 'Algo salió mal. Intenta enviar un email directo.';
+
+  if (!name || !email || !message) {
+    formMsg.textContent = errorMsg;
+    formMsg.className = 'form-msg error';
+    return;
+  }
+
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    formMsg.textContent = emailErrorMsg;
+    formMsg.className = 'form-msg error';
+    return;
+  }
+
+  formSubmit.disabled = true;
+  formSubmit.querySelector('span').textContent = sendingMsg;
+  formMsg.textContent = '';
+
+  try {
+    const res = await fetch('https://formspree.io/f/xnjodbdw', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({ name, email, message })
+    });
+
+    if (res.ok) {
+      formMsg.textContent = successMsg;
+      formMsg.className = 'form-msg success';
+      document.getElementById('fname').value = '';
+      document.getElementById('femail').value = '';
+      document.getElementById('fmsg').value = '';
+    } else {
+      throw new Error();
+    }
+  } catch {
+    formMsg.textContent = errorSubmitMsg;
+    formMsg.className = 'form-msg error';
+  }
+
+  formSubmit.disabled = false;
+  formSubmit.querySelector('span').textContent = lang === 'en' ? 'Send message' : 'Enviar mensaje';
+});
+</script>
+</body>
+</html>
