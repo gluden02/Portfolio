@@ -765,7 +765,23 @@ function applyLanguage(lang) {
         ? "EmanuelEtcheverry_CV.pdf"
         : "EtcheverryEmanuel_CV.pdf";
   }
+  console.log("Idioma aplicado:", lang);
 
+const cvBtn = document.getElementById("downloadCV");
+
+if (cvBtn) {
+  cvBtn.href =
+    lang === "en"
+      ? "EmanuelEtcheverry_CV.pdf"
+      : "EtcheverryEmanuel_CV.pdf";
+
+  cvBtn.download =
+    lang === "en"
+      ? "EmanuelEtcheverry_CV.pdf"
+      : "EtcheverryEmanuel_CV.pdf";
+
+  console.log("Nuevo href:", cvBtn.href);
+}
   localStorage.setItem('lang', lang);
 }
 
