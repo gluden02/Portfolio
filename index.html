@@ -751,39 +751,21 @@ function applyLanguage(lang) {
   langBtn.innerHTML = lang === 'en'
     ? '<span class="lang-flag">🇬🇧</span><span class="lang-code">EN</span><span class="lang-sep">/</span><span class="lang-flag">🇪🇸</span><span class="lang-code">ES</span>'
     : '<span class="lang-flag">🇪🇸</span><span class="lang-code">ES</span><span class="lang-sep">/</span><span class="lang-flag">🇬🇧</span><span class="lang-code">EN</span>';
-  localStorage.setItem('lang', lang);
-  
-  const cvBtn = document.getElementById("downloadCV");
-  if (cvBtn) {
-    cvBtn.href =
-      lang === "en"
-        ? "EmanuelEtcheverry_CV.pdf"
-        : "EtcheverryEmanuel_CV.pdf";
-
-    cvBtn.download =
-      lang === "en"
-        ? "EmanuelEtcheverry_CV.pdf"
-        : "EtcheverryEmanuel_CV.pdf";
-  }
-  console.log("Idioma aplicado:", lang);
-
-const cvBtn = document.getElementById("downloadCV");
+  const cvBtn = document.querySelector('a.cv-download');
 
 if (cvBtn) {
-  cvBtn.href =
-    lang === "en"
-      ? "EmanuelEtcheverry_CV.pdf"
-      : "EtcheverryEmanuel_CV.pdf";
+  cvBtn.href = lang === 'en'
+    ? 'EmanuelEtcheverry_CV.pdf'
+    : 'EtcheverryEmanuel_CV.pdf';
 
-  cvBtn.download =
-    lang === "en"
-      ? "EmanuelEtcheverry_CV.pdf"
-      : "EtcheverryEmanuel_CV.pdf";
-
-  console.log("Nuevo href:", cvBtn.href);
+  cvBtn.setAttribute(
+    'download',
+    lang === 'en'
+      ? 'EmanuelEtcheverry_CV.pdf'
+      : 'EtcheverryEmanuel_CV.pdf'
+  );
 }
-  localStorage.setItem('lang', lang);
-}
+  localStorage.setItem('lang', lang);}
 
 </script>
 </body>
