@@ -765,19 +765,19 @@ if (cvBtn) {
       : 'EtcheverryEmanuel_CV.pdf'
   );
 }
-if (langBtn) {
-
-  langBtn.addEventListener('click', () => {
-
-    const currentLang = document.documentElement.lang;
-    const nextLang = currentLang === 'en' ? 'es' : 'en';
-
-    applyLanguage(nextLang);
-
-  });
-
-  applyLanguage(localStorage.getItem('lang') || 'en');
-}
+  if (langBtn) {
+  
+    langBtn.addEventListener('click', () => {
+  
+      const currentLang = document.documentElement.lang;
+      const nextLang = currentLang === 'en' ? 'es' : 'en';
+  
+      applyLanguage(nextLang);
+  
+    });
+  
+    applyLanguage(localStorage.getItem('lang') || 'en');
+  }
 
 </script>
 </body>
